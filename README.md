@@ -1,3 +1,3 @@
 # OpenLayersMeasurement
 Create distance and area measurement tool in OpenLayers with displaying measurement label for each segment of Geometry
-![](OpenLayers Dynamic Measurement.gif)
+![Dynamic Measurement](OpenLayers Dynamic Measurement.gif)
