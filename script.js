@@ -142,14 +142,14 @@ class Draw {
 
     //if geometry is LineString and coordinates_length is greater than 2, then calculate the total length of the line and set the position of the overlay at last coordninates
     if (geomType == "LineString" && this.coordinates_length > 2 && e.target.getLength() > new ol.geom.LineString([coordinates[0], coordinates[1]]).getLength()) {
-      this.calDistance(this.totalAreaDistanceOverlay, coordinates[this.coordinates_length-1], e.target.getLength());
+      this.calDistance(this.totalAreaDistanceOverlay, coordinates[this.coordinates_length-1], ol.sphere.getLength(e.target));
     }  
 
     //If geometry is Polygon, then it will create the overlay for area measurement and last segment of it which is its first and last coordinates.
     if (geomType == "Polygon" && this.coordinates_length > 3) {
-      this.calArea(this.totalAreaDistanceOverlay, e.target.getFlatInteriorPoint(), e.target.getArea());      
+      this.calArea(this.totalAreaDistanceOverlay, e.target.getFlatInteriorPoint(), ol.sphere.getArea(e.target));      
       partLine = new ol.geom.LineString([coordinates[this.coordinates_length-2], coordinates[this.coordinates_length-1]]);    
-      this.calDistance(this.lastPartLineOverlay, partLine.getFlatMidpoint(), partLine.getLength());
+      this.calDistance(this.lastPartLineOverlay, partLine.getFlatMidpoint(), ol.sphere.getLength(partLine));
     } 
   }
 
